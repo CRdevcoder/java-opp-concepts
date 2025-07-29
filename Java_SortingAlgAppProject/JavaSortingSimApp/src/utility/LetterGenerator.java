@@ -39,10 +39,20 @@ public class LetterGenerator {
         ranGen.setSeed(seed);
     }
 
+    // NOTE: add exception for non letter characters.
+    // if (min < LASTLETTER || max > FIRSTLETTER) then throw exception.
+    public void setRange(Character min, Character max)
+    {
+        // convert character args into ascii code.
+        this.genStartLet = (int)min;
+        this.genEndLet = (int)max;
+    }
+
+
     // Get Random number within specific range.
     private int getRanNum(int min, int max)
     {
-        return ranGen.nextInt(max - min) + min;
+        return ranGen.nextInt((max - min) + 1) + min;
     }
 
     // Get Random Letter using ranGen
@@ -53,13 +63,15 @@ public class LetterGenerator {
         return let;
     }
 
-    
-
-    // Method generates an ArrayList of random letters
-    public static ArrayList<Character> generateLetterList()
+    // Method generates an ArrayList of random letters with specified size. 
+    public ArrayList<Character> generateLetterList(int size)
     {
         ArrayList<Character> list = new ArrayList<>();
 
+        for(int i = 0; i < size; i++)
+        {
+            list.add(nextChar());
+        }
         return list;
     }
 
