@@ -38,19 +38,20 @@ public class BubbleSort extends Sorter {
                 if(listArg.get(j).compareTo( listArg.get(j+1)) > 0)
                 {
                     swap(j,listArg);
-                    System.out.println( i + " - " + j + ": " + listArg + " - Swapped (" + j + ") " + listArg.get(j+1) + " with (" + (j+1) + ") " + listArg.get(j) + "\n");
+                    //System.out.println( i + " - " + j + ": " + listArg + " - Swapped (" + j + ") " + listArg.get(j+1) + " with (" + (j+1) + ") " + listArg.get(j) + "\n");
                     swapped = true;
                 }
             }
             if(!swapped)
             {
-                System.out.println(i + " : No More Swaps, ENDING SORT");
+                //System.out.println(i + " : No More Swaps, ENDING SORT");
                 break;
             }
         }
 
         return listArg;
     }
+    
 
     // Single bubble sorting pass through given ArrayList.
     /*private void pass(ArrayList<Comparable> list, int sortedIndex)

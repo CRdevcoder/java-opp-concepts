@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 // Note: ASCII number values of capital letters are 65(A) to 90(Z).
-
+// Note: Turn into generic class later???
 public class LetterGenerator {
 
     private Random ranGen;
