@@ -1,6 +1,8 @@
-package utility;
+package utility.tests;
 
 import java.util.ArrayList;
+
+import utility.classes.LetterGenerator;
 
 public class LetGenTest {
 

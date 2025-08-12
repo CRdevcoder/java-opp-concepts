@@ -10,6 +10,9 @@ public class BubbleSort extends Sorter {
 
     // using Generics.
 
+    // Sorts a given arraylist and returns it.
+    // Returns ArrayList of type arguement T.
+    // Elements must implement Comparable Interface for their own class.
     @Override
     public <T extends Comparable<T>> ArrayList<T> sortList(ArrayList<T> listArg) {
 
