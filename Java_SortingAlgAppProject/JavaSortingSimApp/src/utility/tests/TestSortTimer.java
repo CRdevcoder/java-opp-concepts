@@ -1,7 +1,8 @@
 package utility.tests;
 
 import java.util.ArrayList;
-import sortingalgorithms.BubbleSort;
+
+import sortingalgorithms.classes.BubbleSort;
 import utility.classes.LetterGenerator;
 import utility.classes.SortingTimer;
 

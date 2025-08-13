@@ -3,7 +3,7 @@ package utility.classes;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-import sortingalgorithms.Sorter;
+import sortingalgorithms.classes.Sorter;
 
 // STATUS: Beta 1
 // TrailRound method will require changes, supposed to return Arraylist of trail time data.
