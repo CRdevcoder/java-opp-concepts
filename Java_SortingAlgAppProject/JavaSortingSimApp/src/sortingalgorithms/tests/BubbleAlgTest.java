@@ -19,13 +19,14 @@ public class BubbleAlgTest {
 
         bsort.sortList(ranList); // sorts list
 
+        System.out.println("SORTED LETTER LIST:\n" + ranList + "\n");
+
         // Another Letter list:
         generator.setRange('A', 'H');
         ranList = generator.generateLetterList(10);
         System.out.println("2nd Bubble Sorting List:\n" + ranList);
 
         bsort.sortList(ranList);
-
 
         System.out.println("SORTED LETTER LIST:\n" + ranList + "\n");
 
@@ -38,6 +39,8 @@ public class BubbleAlgTest {
         System.out.println("UNSORTED NUMBER LIST:\n" + numList + "\n");
 
         bsort.sortList(numList);
+        System.out.println("SORTED NUMBER LIST:\n" + numList + "\n");
+
 
     }
 

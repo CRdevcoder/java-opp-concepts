@@ -6,7 +6,7 @@ import java.lang.Character;
 
 // implements Bubble Sort
 
-public class BubbleSort extends Sorter {
+public class BubbleSort implements Sorter {
 
     // using Generics.
 
