@@ -1,4 +1,4 @@
-package sortingalgorithms;
+package sortingalgorithms.classes;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,5 @@ public class MergeSort implements Sorter {
         // Implement Merge Sort Here.
         return listArg;
     }
-
-
 
 }
