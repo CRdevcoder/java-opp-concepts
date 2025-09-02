@@ -20,8 +20,6 @@ public class MergeSort implements Sorter {
 
         // calculate mid point.
         int mid = (first + last)/2;
-
-        //System.out.println("Sub array Length: " + subLength);
         
         // Base case - when last index is equal to first index. 
         // (When receive single element sub array)
@@ -31,7 +29,7 @@ public class MergeSort implements Sorter {
             recursiveMergeSort(a, first, mid); // leftmost sub array
             recursiveMergeSort(a, mid + 1, last); // rightmost sub array
 
-            // Phase 2 - begin sorting subarrays by merging them together
+            // Phase 2 - Post Base Case - begin sorting subarrays by merging them together
             // Ran when recursive calls are returning
             merge(a,first,mid,last);
         }
@@ -58,9 +56,6 @@ public class MergeSort implements Sorter {
         // temp ArrayList
         ArrayList<T> tempList = new ArrayList<>();
 
-        //System.out.print("Left Array: " + first + " - " + mid);
-        //System.out.println(" Right Arry: " + rightSubStart + " - " + rightSubEnd + " length: " + a.size());
-        
         // While both sub Arrays haven't been looped through fully, compare elements from both.
         // after each while loop iteration, the smaller element between sub arrays will be added to temp array.
         while( (leftSubStart <= leftSubEnd) && (rightSubStart <= rightSubEnd))
@@ -69,10 +64,7 @@ public class MergeSort implements Sorter {
             T leftItem = a.get(leftSubStart);
             T rightItem = a.get(rightSubStart);
 
-            //System.out.println("LEFT: " + leftSubStart + " " + leftSubEnd);
-
             // returns negative if leftItem less than rightItem.
-            //System.out.println("Left item:" + leftItem + " right item: " + rightItem + " compare to: " + leftItem.compareTo(rightItem));
             if(leftItem.compareTo(rightItem) <= 0)
             {
                 tempList.add(leftItem); // add smaller item to list.
@@ -99,12 +91,9 @@ public class MergeSort implements Sorter {
             rightSubStart++;
         }
 
-        //System.out.print("Merged Templist: " + tempList + "\nCopying temp to main arrayList, (main index - copied elem): ");
-
         // empty parameter arrayList, then copy temp array into it.
         int index = first;
         for (int i = 0; i < tempList.size(); i++) {
-            //System.out.print( "(" + index + " - " + tempList.get(i) + "), ");
             a.set(index, tempList.get(i));
             index++;
         }
