@@ -16,9 +16,10 @@ public class TestMergeSort {
         gl.setRange('A','F');
         ArrayList<Character> list = gl.generateLetterList(20);
         
-        // Sorting random List of Chars
-        MergeSort ms = new MergeSort();
+        // Creating MergeSort object, setting print mode to true.
+        MergeSort ms = new MergeSort(true);
 
+        // Sorting random List of Chars
         System.out.println("\n(SORTING CHAR ARRAY)");
         System.out.println("Unsorted Char Array: " + list + "\n");
 

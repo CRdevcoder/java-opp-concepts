@@ -4,6 +4,31 @@ import java.util.ArrayList;
 
 public class MergeSort implements Sorter {
 
+    boolean printMode; // set to true if you want methods to print to console.
+
+    // default constructor
+    public MergeSort()
+    {
+        this.printMode = false;
+    }
+
+    public MergeSort(boolean printMode )
+    {
+        this.printMode = printMode;
+    }
+
+    // setter.
+    public void setPrintMode(boolean printMode)
+    {
+        this.printMode = printMode;
+    }
+    // getter.
+    public boolean getPrintMode()
+    {
+        return this.printMode;
+    }
+
+    // sortList method. calls recursive sort.
     public <T extends Comparable<T>> ArrayList<T> sortList( ArrayList<T> listArg)
     {
         // Enter first and last index of list.
@@ -13,11 +38,12 @@ public class MergeSort implements Sorter {
 
     private <T extends Comparable<T>> void recursiveMergeSort( ArrayList<T> a, int first, int last)
     {
-        // subarray length
-        int subLength = Math.abs(first - last);
-
-        System.out.println( "Rec MergeSort CALL PARAM: first: " + first + " | last: " + last + " | sub array length: " + subLength);
-
+        if (printMode) {
+            // subarray length
+            int subLength = Math.abs(first - last);
+            //prints param info:
+            System.out.println( "Rec MergeSort CALL PARAM: first: " + first + " | last: " + last + " | sub array length: " + subLength);
+        }
         // calculate mid point.
         int mid = (first + last)/2;
         
@@ -43,8 +69,14 @@ public class MergeSort implements Sorter {
     // Merges two adjacent sub arrays that are within the index range (first and last).
     private <T extends Comparable<T>> void merge(ArrayList<T> a, int first, int mid, int last)
     {
+        if (printMode) {
+            //subarray length
+            int subLength = Math.abs(first - last);
+            // prints param info:
+            System.out.println( "MERGE CALL PARAM: " + a + "_ first: " + first + "_ mid: " + mid + "_ last: " + last + "_ sub array length: " + subLength + "\n");
+        }
         int subLength = Math.abs(first - last);
-        System.out.println( "MERGE CALL PARAM: " + a + "_ first: " + first + "_ mid: " + mid + "_ last: " + last + "_ sub array length: " + subLength);
+
         int leftSubStart, leftSubEnd, rightSubStart, rightSubEnd;
         // left sub array (1st) index range.
         leftSubStart = first;
@@ -59,7 +91,6 @@ public class MergeSort implements Sorter {
         // after each while loop iteration, the smaller element between sub arrays will be added to temp array.
         while( (leftSubStart <= leftSubEnd) && (rightSubStart <= rightSubEnd))
         {
-            // BUG: merging not singular array items?
             T leftItem = a.get(leftSubStart);
             T rightItem = a.get(rightSubStart);
 
@@ -96,7 +127,6 @@ public class MergeSort implements Sorter {
             a.set(index, tempList.get(i));
             index++;
         }
-        System.out.println();
 
         return;// FINISHED
     }
