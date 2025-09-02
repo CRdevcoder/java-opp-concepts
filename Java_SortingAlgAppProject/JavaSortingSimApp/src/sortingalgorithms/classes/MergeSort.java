@@ -16,9 +16,13 @@ public class MergeSort implements Sorter {
         // calculate mid point.
         int mid = (first + last)/2;
 
-        // Base case - when last index is greater than first index. 
+        // subarray length
+        int subLength = Math.abs(first - last);
+        System.out.println("Sub array Length: " + subLength);
+        
+        // Base case - when last index is equal to first index. 
         // (When receive single element sub array)
-        if(last > first)
+        if( first < last)
         {
             // Phase 1 - dividing into sub arrays
             recursiveMergeSort(a, first, mid); // leftmost sub array
@@ -29,9 +33,9 @@ public class MergeSort implements Sorter {
             System.out.println( "MERGE CALL: " + a + "\n first: " + first + " mid:" + mid + " last:" + last);
             merge(a,first,mid,last);
         }
-        else
+        else // when one element array
         {
-            //System.out.println("RETURNING");
+            System.out.println("RETURNING");
             return; // base case is met. Begin returning.
         }
     }
@@ -40,7 +44,7 @@ public class MergeSort implements Sorter {
     // Merges two adjacent sub arrays that are within the index range (first and last).
     private <T extends Comparable<T>> void merge(ArrayList<T> a, int first, int mid, int last)
     {
-        System.out.println("Merging");
+        System.out.println("Merging subarray: " + a);
         int leftSubStart, leftSubEnd, rightSubStart, rightSubEnd;
         // left sub array (1st) index range.
         leftSubStart = first;
@@ -51,20 +55,22 @@ public class MergeSort implements Sorter {
         // temp ArrayList
         ArrayList<T> tempList = new ArrayList<>();
 
-        System.out.print("Left: " + first + " - " + mid);
-        System.out.println(" Right: " + rightSubStart + " - " + rightSubEnd + " length: " + a.size());
+        System.out.print("Left Array: " + first + " - " + mid);
+        System.out.println(" Right Arry: " + rightSubStart + " - " + rightSubEnd + " length: " + a.size());
         
         // While both sub Arrays haven't been looped through fully, compare elements from both.
         // after each while loop iteration, the smaller element between sub arrays will be added to temp array.
         while( (leftSubStart <= leftSubEnd) && (rightSubStart <= rightSubEnd))
         {
+            // BUG: merging not singular array items?
             T leftItem = a.get(leftSubStart);
             T rightItem = a.get(rightSubStart);
 
             //System.out.println("LEFT: " + leftSubStart + " " + leftSubEnd);
 
             // returns negative if leftItem less than rightItem.
-            if(leftItem.compareTo(rightItem) < 0)
+            System.out.println("Left item:" + leftItem + " right item: " + rightItem + " compare to: " + leftItem.compareTo(rightItem));
+            if(leftItem.compareTo(rightItem) <= 0)
             {
                 tempList.add(leftItem); // add smaller item to list.
                 leftSubStart++; // Move index foward so we don't add smaller item again.
@@ -75,12 +81,31 @@ public class MergeSort implements Sorter {
             }
         }
 
+        // COPY LEFT OVER elements in left sub array
+        while ((leftSubStart <= leftSubEnd)) {
+            T leftItem = a.get(leftSubStart);
+            tempList.add(leftItem);
+            leftSubStart++;
+        }
+
+        // Copy left over elements in right sub array.
+        while(rightSubStart <= rightSubEnd)
+        {
+            T rightItem = a.get(rightSubStart);
+            tempList.add(rightItem);
+            rightSubStart++;
+        }
+
         System.out.println("Templist: " + tempList);
+        System.out.println("first:" + first);
 
         // empty parameter arrayList, then copy temp array into it.
-        for (int i = first; i < tempList.size(); i++) {
-            System.out.print(i + ", ");
-            a.set(i, tempList.get(first + i));
+        // BUG: NOT copying correctly!
+        int index = first;
+        for (int i = 0; i < tempList.size(); i++) {
+            System.out.print(index + " - " + tempList.get(i) + ", ");
+            a.set(index, tempList.get(i));
+            index++;
         }
         System.out.println();
 

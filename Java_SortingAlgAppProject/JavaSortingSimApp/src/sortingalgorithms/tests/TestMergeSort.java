@@ -10,6 +10,7 @@ public class TestMergeSort {
 
     public static void main(String[] args) {
 
+        System.out.println("TESTING MERGE SORTER:");
         // Letter Generator.
         LetterGenerator gl = new LetterGenerator(90583623);
         
@@ -29,6 +30,8 @@ public class TestMergeSort {
         ms.<Integer>sortList(numList);
 
         System.out.println("Sorted Array: " + numList);
+
+        System.out.println("END");
 
 
 
