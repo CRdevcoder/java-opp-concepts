@@ -23,6 +23,12 @@ public class SortingTimer<E extends Comparable<E>> {
     {
         this.algorithm = algorithm;
     }
+
+    // setter
+    public void setAlgorithm(Sorter algorithm)
+    {
+        this.algorithm = algorithm;
+    }
     
     // returns elapsed nanosecounds of algorithm.
     public long testTrail(ArrayList<E> list)
@@ -37,7 +43,7 @@ public class SortingTimer<E extends Comparable<E>> {
     }
 
     // provide arraylist and number of test trails, prints out time results.
-    public void trailRound(int numTrails, ArrayList<E> list)
+    public long trailRound(int numTrails, ArrayList<E> list)
     {
         long averageTime = 0;
         for (int i = 0; i < numTrails; i++) {
@@ -56,6 +62,7 @@ public class SortingTimer<E extends Comparable<E>> {
 
         averageTime =  averageTime/numTrails;
         System.out.println("AVE TIME: " + averageTime);
+        return averageTime;
     }
 
 
