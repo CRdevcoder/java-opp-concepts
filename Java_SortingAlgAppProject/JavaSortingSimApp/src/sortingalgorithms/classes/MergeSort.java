@@ -13,12 +13,15 @@ public class MergeSort implements Sorter {
 
     private <T extends Comparable<T>> void recursiveMergeSort( ArrayList<T> a, int first, int last)
     {
+        // subarray length
+        int subLength = Math.abs(first - last);
+
+        System.out.println( "Rec MergeSort CALL PARAM: first: " + first + " | last: " + last + " | sub array length: " + subLength);
+
         // calculate mid point.
         int mid = (first + last)/2;
 
-        // subarray length
-        int subLength = Math.abs(first - last);
-        System.out.println("Sub array Length: " + subLength);
+        //System.out.println("Sub array Length: " + subLength);
         
         // Base case - when last index is equal to first index. 
         // (When receive single element sub array)
@@ -30,12 +33,11 @@ public class MergeSort implements Sorter {
 
             // Phase 2 - begin sorting subarrays by merging them together
             // Ran when recursive calls are returning
-            System.out.println( "MERGE CALL: " + a + "\n first: " + first + " mid:" + mid + " last:" + last);
             merge(a,first,mid,last);
         }
         else // when one element array
         {
-            System.out.println("RETURNING");
+            //System.out.println("Base Case - RETURNING");
             return; // base case is met. Begin returning.
         }
     }
@@ -44,7 +46,8 @@ public class MergeSort implements Sorter {
     // Merges two adjacent sub arrays that are within the index range (first and last).
     private <T extends Comparable<T>> void merge(ArrayList<T> a, int first, int mid, int last)
     {
-        System.out.println("Merging subarray: " + a);
+        int subLength = Math.abs(first - last);
+        System.out.println( "MERGE CALL PARAM: " + a + "_ first: " + first + "_ mid: " + mid + "_ last: " + last + "_ sub array length: " + subLength);
         int leftSubStart, leftSubEnd, rightSubStart, rightSubEnd;
         // left sub array (1st) index range.
         leftSubStart = first;
@@ -55,8 +58,8 @@ public class MergeSort implements Sorter {
         // temp ArrayList
         ArrayList<T> tempList = new ArrayList<>();
 
-        System.out.print("Left Array: " + first + " - " + mid);
-        System.out.println(" Right Arry: " + rightSubStart + " - " + rightSubEnd + " length: " + a.size());
+        //System.out.print("Left Array: " + first + " - " + mid);
+        //System.out.println(" Right Arry: " + rightSubStart + " - " + rightSubEnd + " length: " + a.size());
         
         // While both sub Arrays haven't been looped through fully, compare elements from both.
         // after each while loop iteration, the smaller element between sub arrays will be added to temp array.
@@ -69,7 +72,7 @@ public class MergeSort implements Sorter {
             //System.out.println("LEFT: " + leftSubStart + " " + leftSubEnd);
 
             // returns negative if leftItem less than rightItem.
-            System.out.println("Left item:" + leftItem + " right item: " + rightItem + " compare to: " + leftItem.compareTo(rightItem));
+            //System.out.println("Left item:" + leftItem + " right item: " + rightItem + " compare to: " + leftItem.compareTo(rightItem));
             if(leftItem.compareTo(rightItem) <= 0)
             {
                 tempList.add(leftItem); // add smaller item to list.
@@ -96,14 +99,12 @@ public class MergeSort implements Sorter {
             rightSubStart++;
         }
 
-        System.out.println("Templist: " + tempList);
-        System.out.println("first:" + first);
+        //System.out.print("Merged Templist: " + tempList + "\nCopying temp to main arrayList, (main index - copied elem): ");
 
         // empty parameter arrayList, then copy temp array into it.
-        // BUG: NOT copying correctly!
         int index = first;
         for (int i = 0; i < tempList.size(); i++) {
-            System.out.print(index + " - " + tempList.get(i) + ", ");
+            //System.out.print( "(" + index + " - " + tempList.get(i) + "), ");
             a.set(index, tempList.get(i));
             index++;
         }
