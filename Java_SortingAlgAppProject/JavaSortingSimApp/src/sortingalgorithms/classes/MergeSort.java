@@ -35,7 +35,6 @@ public class MergeSort implements Sorter {
         }
         else // when one element array
         {
-            //System.out.println("Base Case - RETURNING");
             return; // base case is met. Begin returning.
         }
     }
